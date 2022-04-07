@@ -1,7 +1,7 @@
 (function() { 
   'use strict';
 
-  let queue = window.fathom.q || [];
+  let queue = window.grasp.q || [];
   let config = {
     'siteId': '',
     'trackerUrl': '',
@@ -81,7 +81,7 @@
     let thirtyMinsAgo = new Date();
     thirtyMinsAgo.setMinutes(thirtyMinsAgo.getMinutes() - 30);
 
-    let data = getCookie('_fathom');
+    let data = getCookie('_grasp');
     if(! data) {
       return newVisitorData();
     }
@@ -101,7 +101,7 @@
   }
 
   function findTrackerUrl() {
-    const el = document.getElementById('fathom-script')
+    const el = document.getElementById('grasp-script')
     return el ? el.src.replace('tracker.js', 'collect') : '';
   }
 
@@ -188,7 +188,7 @@
       data.isNewVisitor = false;
       data.isNewSession = false;
       data.lastSeen = +new Date();
-      setCookie('_fathom', JSON.stringify(data), { expires: midnight, path: '/' });
+      setCookie('_grasp', JSON.stringify(data), { expires: midnight, path: '/' });
 
       // remove tracking img from DOM
       document.body.removeChild(img)
@@ -208,13 +208,13 @@
     document.body.appendChild(img);  
   }
 
-  // override global fathom object
-  window.fathom = function() {
+  // override global grasp object
+  window.grasp = function() {
     var args = [].slice.call(arguments);
     var c = args.shift();
     commands[c].apply(this, args);
   };
 
   // process existing queue
-  queue.forEach((i) => fathom.apply(this, i));
+  queue.forEach((i) => grasp.apply(this, i));
 })()

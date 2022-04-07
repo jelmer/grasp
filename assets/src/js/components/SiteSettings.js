@@ -108,7 +108,7 @@ class SiteSettings extends Component {
         return (
         <div class="modal-wrap" style={"display: " + ( props.visible ? '' : 'none')} onClick={this.handleClickEvent}>
             <div class="modal">
-                <p>{props.site.unsaved ? 'Add a new site to track with Fathom' : 'Update your site name or get your tracking code'}</p>
+                <p>{props.site.unsaved ? 'Add a new site to track with Grasp' : 'Update your site name or get your tracking code'}</p>
                 <form onSubmit={this.onSubmit}>
                     <fieldset>
                         <label for="site-name">Site name</label>
@@ -117,7 +117,7 @@ class SiteSettings extends Component {
 
                     <fieldset style={props.site.unsaved ? 'display: none;' : ''}>
                         <label>Add this code to your website    <small class="right">(site ID = {props.site.trackingId})</small></label>
-                        <textarea ref={this.setTextarea} onFocus={this.handleTextareaClickEvent} readonly="readonly">{`<!-- Fathom - simple website analytics - https://github.com/usefathom/fathom -->
+                        <textarea ref={this.setTextarea} onFocus={this.handleTextareaClickEvent} readonly="readonly">{`<!-- Grasp - simple website analytics - https://github.com/jelmer/grasp -->
 <script>
 (function(f, a, t, h, o, m){
 	a[h]=a[h]||function(){
@@ -125,13 +125,13 @@ class SiteSettings extends Component {
 	};
 	o=f.createElement('script'),
 	m=f.getElementsByTagName('script')[0];
-	o.async=1; o.src=t; o.id='fathom-script';
+	o.async=1; o.src=t; o.id='grasp-script';
 	m.parentNode.insertBefore(o,m)
-})(document, window, '//${document.domain}/tracker.js', 'fathom');
-fathom('set', 'siteId', '${props.site.trackingId}');
-fathom('trackPageview');
+})(document, window, '//${document.domain}/tracker.js', 'grasp');
+grasp('set', 'siteId', '${props.site.trackingId}');
+grasp('trackPageview');
 </script>
-<!-- / Fathom -->`}
+<!-- / Grasp -->`}
                     </textarea>
                     <small><a href="javascript:void(0);" onClick={this.copyToClipboard}>{state.copied ? "Copied!" : "Copy code"}</a></small>
                 </fieldset>

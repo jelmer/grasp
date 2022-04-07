@@ -13,14 +13,14 @@ type Config struct {
 	Host     string `default:""`
 	User     string `default:""`
 	Password string `default:""`
-	Name     string `default:"fathom.db"`
+	Name     string `default:"grasp.db"`
 	SSLMode  string `default:""`
 }
 
 func (c *Config) DSN() string {
 	var dsn string
 
-	// if FATHOM_DATABASE_URL was set, use that
+	// if GRASP_DATABASE_URL was set, use that
 	// this relies on the user to set the appropriate parameters, eg ?parseTime=true when using MySQL
 	if c.URL != "" {
 		return c.URL

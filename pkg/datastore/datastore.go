@@ -3,8 +3,8 @@ package datastore
 import (
 	"time"
 
-	"github.com/usefathom/fathom/pkg/datastore/sqlstore"
-	"github.com/usefathom/fathom/pkg/models"
+	"github.com/jelmer/grasp/pkg/datastore/sqlstore"
+	"github.com/jelmer/grasp/pkg/models"
 )
 
 // ErrNoResults is returned whenever a single-item query returns 0 results

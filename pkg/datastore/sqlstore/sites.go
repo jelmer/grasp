@@ -3,7 +3,7 @@ package sqlstore
 import (
 	"database/sql"
 
-	"github.com/usefathom/fathom/pkg/models"
+	"github.com/jelmer/grasp/pkg/models"
 )
 
 // GetSites gets all sites in the database

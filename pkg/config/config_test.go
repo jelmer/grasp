@@ -16,13 +16,13 @@ func TestLoadEnv(t *testing.T) {
 		t.Errorf("Expected the same number of env values")
 	}
 
-	data := []byte("FATHOM_DATABASE_DRIVER=\"sqlite3\"")
+	data := []byte("GRASP_DATABASE_DRIVER=\"sqlite3\"")
 	ioutil.WriteFile("env_values", data, 0644)
 	defer os.Remove("env_values")
 
 	LoadEnv("env_values")
 
-	got := os.Getenv("FATHOM_DATABASE_DRIVER")
+	got := os.Getenv("GRASP_DATABASE_DRIVER")
 	if got != "sqlite3" {
 		t.Errorf("Expected %v, got %v", "sqlite3", got)
 	}
@@ -36,13 +36,13 @@ func TestParse(t *testing.T) {
 	}
 
 	secret := "my-super-secret-string"
-	os.Setenv("FATHOM_SECRET", secret)
+	os.Setenv("GRASP_SECRET", secret)
 	cfg = Parse()
 	if cfg.Secret != secret {
 		t.Errorf("Expected %#v, got %#v", secret, cfg.Secret)
 	}
 
-	os.Setenv("FATHOM_DATABASE_DRIVER", "sqlite")
+	os.Setenv("GRASP_DATABASE_DRIVER", "sqlite")
 	cfg = Parse()
 	if cfg.Database.Driver != "sqlite3" {
 		t.Errorf("expected %#v, got %#v", "sqlite3", cfg.Database.Driver)
@@ -50,7 +50,7 @@ func TestParse(t *testing.T) {
 }
 
 func TestDatabaseURL(t *testing.T) {
-	data := []byte("FATHOM_DATABASE_URL=\"postgres://dbuser:dbsecret@dbhost:1234/dbname\"")
+	data := []byte("GRASP_DATABASE_URL=\"postgres://dbuser:dbsecret@dbhost:1234/dbname\"")
 	ioutil.WriteFile("env_values", data, 0644)
 	defer os.Remove("env_values")
 

@@ -9,7 +9,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/kelseyhightower/envconfig"
 	log "github.com/sirupsen/logrus"
-	"github.com/usefathom/fathom/pkg/datastore/sqlstore"
+	"github.com/jelmer/grasp/pkg/datastore/sqlstore"
 )
 
 // Config wraps the configuration structs for the various application parts
@@ -48,7 +48,7 @@ func Parse() *Config {
 	var cfg Config
 
 	// with config file loaded into env values, we can now parse env into our config struct
-	err := envconfig.Process("Fathom", &cfg)
+	err := envconfig.Process("Grasp", &cfg)
 	if err != nil {
 		log.Fatalf("Error parsing configuration from environment: %s", err)
 	}

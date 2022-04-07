@@ -1,19 +1,19 @@
 version: "3"
 services:
-  fathom:
-    image: usefathom/fathom:latest
+  grasp:
+    image: ghcr.io/jelmer/grasp:latest
     ports:
       - "8080:8080"
     environment:
-      - "FATHOM_SERVER_ADDR=:8080"
-      - "FATHOM_GZIP=true"
-      - "FATHOM_DEBUG=false"
-      - "FATHOM_DATABASE_DRIVER=mysql"
-      - "FATHOM_DATABASE_NAME=fathom"
-      - "FATHOM_DATABASE_USER=fathom"
-      - "FATHOM_DATABASE_PASSWORD=password01"
-      - "FATHOM_DATABASE_HOST=mysql:3306"
-      - "FATHOM_SECRET=TWEn6GXQDx45PZfmJWvyGpXf5M8b94bszgw8JcJWEd6WxgrnUkLatS34GwjPTvZb"
+      - "GRASP_SERVER_ADDR=:8080"
+      - "GRASP_GZIP=true"
+      - "GRASP_DEBUG=false"
+      - "GRASP_DATABASE_DRIVER=mysql"
+      - "GRASP_DATABASE_NAME=grasp"
+      - "GRASP_DATABASE_USER=grasp"
+      - "GRASP_DATABASE_PASSWORD=password01"
+      - "GRASP_DATABASE_HOST=mysql:3306"
+      - "GRASP_SECRET=TWEn6GXQDx45PZfmJWvyGpXf5M8b94bszgw8JcJWEd6WxgrnUkLatS34GwjPTvZb"
     links:
       - "mysql:mysql"
     depends_on:
@@ -27,8 +27,8 @@ services:
       - "127.0.0.1:3306:3306"
     environment:
       - "MYSQL_ALLOW_EMPTY_PASSWORD=false"
-      - "MYSQL_DATABASE=fathom"
+      - "MYSQL_DATABASE=grasp"
       - "MYSQL_PASSWORD=password01"
       - "MYSQL_ROOT_PASSWORD=password01"
-      - "MYSQL_USER=fathom"
+      - "MYSQL_USER=grasp"
     restart: always

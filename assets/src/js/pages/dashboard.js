@@ -181,10 +181,7 @@ class Dashboard extends Component {
           <div class="half">
           <nav>
             <ul>
-              <li><a href="https://usefathom.com/">Fathom</a></li>
-              <li><a href="https://usefathom.com/terms/">Terms of use</a></li>
-              <li><a href="https://usefathom.com/privacy/">Privacy policy</a></li>
-              <li><a href="https://usefathom.com/data/">Our data policy</a></li>
+              <li><a href="https://github.com/jelmer/grasp/">Grasp</a></li>
               <li><LogoutButton onSuccess={props.onLogout} /></li>
             </ul>
           </nav>

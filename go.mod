@@ -1,4 +1,4 @@
-module github.com/usefathom/fathom
+module github.com/jelmer/grasp
 
 go 1.17
 

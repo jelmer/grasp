@@ -5,8 +5,8 @@ coverage.out
 build
 dist
 *.db
-fathom
-!cmd/fathom
+grasp
+!cmd/grasp
 
 assets/build
 assets/dist

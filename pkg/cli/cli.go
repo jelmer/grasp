@@ -8,8 +8,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 	"github.com/urfave/cli"
-	"github.com/usefathom/fathom/pkg/config"
-	"github.com/usefathom/fathom/pkg/datastore"
+	"github.com/jelmer/grasp/pkg/config"
+	"github.com/jelmer/grasp/pkg/datastore"
 )
 
 type App struct {
@@ -28,10 +28,10 @@ func Run(version string, commit string, buildDate string) error {
 
 	// setup CLI app
 	app = &App{cli.NewApp(), nil, nil}
-	app.Name = "Fathom"
+	app.Name = "Grasp"
 	app.Usage = "simple & transparent website analytics"
 	app.Version = fmt.Sprintf("%v, commit %v, built at %v", strings.TrimPrefix(version, "v"), commit, buildDate)
-	app.HelpName = "fathom"
+	app.HelpName = "grasp"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  "config, c",

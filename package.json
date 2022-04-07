@@ -2,7 +2,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/usefathom/fathom.git"
+    "url": "https://github.com/jelmer/grasp.git"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",

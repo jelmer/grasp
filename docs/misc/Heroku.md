@@ -1,4 +1,4 @@
-# Running Fathom on Heroku
+# Running Grasp on Heroku
 
 ### Requirements
 
@@ -26,27 +26,27 @@ heroku git:clone -a UNIQUE_APP_NAME
 cd UNIQUE_APP_NAME
 ```
 
-* create the folder that will contain fathom
+* create the folder that will contain grasp
 
 ```bash
 mkdir -p bin
 ```
 
-* download latest version of fathom for linux 64bit
+* download latest version of grasp for linux 64bit
 
 ```bash
-curl -s https://api.github.com/repos/usefathom/fathom/releases/latest \
+curl -s https://api.github.com/repos/jelmer/grasp/releases/latest \
   | grep browser_download_url \
   | grep linux_amd64.tar.gz \
   | cut -d '"' -f 4 \
   | wget -qi - -O- \
-  | tar --directory bin -xz - fathom
+  | tar --directory bin -xz - grasp
 ```
 
 * create the Procfile for Heroku
 
 ```bash
-echo "web: bin/fathom server" > Procfile
+echo "web: bin/grasp server" > Procfile
 ```
 
 * create a Postgres database (you can change the type of plan if you want - https://elements.heroku.com/addons/heroku-postgresql#pricing)
@@ -61,11 +61,11 @@ here you can change the way you generate your secret_key.
 
 ```bash
 heroku config:set PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/app/bin \
-  FATHOM_DATABASE_DRIVER=postgres \
-  FATHOM_DATABASE_URL=$(heroku config:get DATABASE_URL) \
-  FATHOM_DEBUG=true \
-  FATHOM_SECRET=$(openssl rand -base64 32) \
-  FATHOM_GZIP=true
+  GRASP_DATABASE_DRIVER=postgres \
+  GRASP_DATABASE_URL=$(heroku config:get DATABASE_URL) \
+  GRASP_DEBUG=true \
+  GRASP_SECRET=$(openssl rand -base64 32) \
+  GRASP_GZIP=true
 ```
 
 * add, commit and push all our files
@@ -86,13 +86,13 @@ heroku dyno:resize hobby
 * check that everything is working
 
 ```bash
-heroku run fathom --version
+heroku run grasp --version
 ```
 
 * add the first user
 
 ```bash
-heroku run fathom user add --email="test@test.com" --password="test_password"
+heroku run grasp user add --email="test@test.com" --password="test_password"
 ```
 
 * open the browser to login and add your first website

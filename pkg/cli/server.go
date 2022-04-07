@@ -9,42 +9,42 @@ import (
 	"github.com/urfave/cli"
 
 	"github.com/gorilla/handlers"
-	"github.com/usefathom/fathom/pkg/api"
+	"github.com/jelmer/grasp/pkg/api"
 	"golang.org/x/crypto/acme/autocert"
 )
 
 var serverCmd = cli.Command{
 	Name:    "server",
 	Aliases: []string{"s"},
-	Usage:   "start the fathom web server",
+	Usage:   "start the grasp web server",
 	Action:  server,
 	Flags: []cli.Flag{
 		cli.StringFlag{
-			EnvVar: "FATHOM_SERVER_ADDR,PORT",
+			EnvVar: "GRASP_SERVER_ADDR,PORT",
 			Name:   "addr,port",
 			Usage:  "server address",
 			Value:  ":8080",
 		},
 
 		cli.BoolFlag{
-			EnvVar: "FATHOM_LETS_ENCRYPT",
+			EnvVar: "GRASP_LETS_ENCRYPT",
 			Name:   "lets-encrypt",
 		},
 
 		cli.BoolFlag{
-			EnvVar: "FATHOM_GZIP",
+			EnvVar: "GRASP_GZIP",
 			Name:   "gzip",
 			Usage:  "enable gzip compression",
 		},
 
 		cli.StringFlag{
-			EnvVar: "FATHOM_HOSTNAME",
+			EnvVar: "GRASP_HOSTNAME",
 			Name:   "hostname",
 			Usage:  "domain when using --lets-encrypt",
 		},
 
 		cli.BoolFlag{
-			EnvVar: "FATHOM_DEBUG",
+			EnvVar: "GRASP_DEBUG",
 			Name:   "debug, d",
 		},
 	},
