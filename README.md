@@ -20,15 +20,15 @@ For getting a development version of Grasp up & running, go through the followin
 1. Download the code: `git clone https://github.com/jelmer/grasp.git $GOPATH/src/github.com/jelmer/grasp`
 1. Compile the project into an executable: `make build`
 1. (Optional) Set [custom configuration values](docs/Configuration.md)
-1. (Required) Register a user account: `./fathom user add --email=<email> --password=<password>`
-1. Start the webserver: `./fathom server` and then visit **http://localhost:8080** to access your analytics dashboard
+1. (Required) Register a user account: `./grasp user add --email=<email> --password=<password>`
+1. Start the webserver: `./grasp server` and then visit **http://localhost:8080** to access your analytics dashboard
 
 ## Docker
 
 ### Building
 
-Ensure you have Docker installed and run `docker build -t fathom .`.
-Run the container with `docker run -d -p 8080:8080 fathom`.
+Ensure you have Docker installed and run `docker build -t grasp .`.
+Run the container with `docker run -d -p 8080:8080 grasp`.
 
 ### Running
 
@@ -40,11 +40,11 @@ To start tracking, create a site in your Grasp dashboard and copy the tracking s
 
 ### Content Security Policy
 
-If you use a [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to specify security policies for your website, Grasp requires the following CSP directives (replace `yourfathom.com` with the URL to your Grasp instance):
+If you use a [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to specify security policies for your website, Grasp requires the following CSP directives (replace `yourgrasp.com` with the URL to your Grasp instance):
 
 ```
-script-src: yourfathom.com;
-img-src: yourfathom.com;
+script-src: yourgrasp.com;
+img-src: yourgrasp.com;
 ```
 
 ## Copyright and license

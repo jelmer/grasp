@@ -6,11 +6,13 @@ COPY assets/ ./assets/
 RUN npm install && NODE_ENV=production ./node_modules/gulp/bin/gulp.js
 
 FROM golang:latest AS binarybuilder
-RUN go get -u github.com/gobuffalo/packr/packr
+RUN go install github.com/gobuffalo/packr/packr@latest
 WORKDIR /go/src/github.com/jelmer/grasp
 COPY . /go/src/github.com/jelmer/grasp
 COPY --from=assetbuilder /app/assets/build ./assets/build
-RUN make docker
+ARG GOARCH=amd64
+ARG GOOS=linux
+RUN make ARCH=${GOARCH} OS=${GOOS} docker
 
 FROM alpine:latest
 EXPOSE 8080

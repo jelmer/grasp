@@ -30,11 +30,6 @@
         }).join('&');
   }
 
-  function randomString(n) {
-    var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    return Array(n).join().split(',').map(() => s.charAt(Math.floor(Math.random() * s.length))).join('');
-  }
-
   function getCookie(name) {
     var cookies = document.cookie ? document.cookie.split('; ') : [];
     
@@ -160,7 +155,6 @@
 
     let data = getData();
     const d = {
-      id: randomString(20),
       pid: data.previousPageviewId || '',
       p: path,
       h: hostname,
@@ -175,10 +169,11 @@
     let img = document.createElement('img');
     img.setAttribute('alt', '');
     img.setAttribute('aria-hidden', 'true');
+    img.setAttribute('style', 'position:absolute');
     img.src = url + stringifyObject(d);
     img.addEventListener('load', function() {
-      let now = new Date();
-      let midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 24, 0, 0);
+      let midnight = new Date();
+      midnight.setHours(24); midnight.setMinutes(0); midnight.setSeconds(0);
 
       // update data in cookie
       if( data.pagesViewed.indexOf(path) == -1 ) {
