@@ -33,11 +33,6 @@ func Run(version string, commit string, buildDate string) error {
 	app.Version = fmt.Sprintf("%v, commit %v, built at %v", strings.TrimPrefix(version, "v"), commit, buildDate)
 	app.HelpName = "grasp"
 	app.Flags = []cli.Flag{
-		cli.StringFlag{
-			Name:  "config, c",
-			Value: ".env",
-			Usage: "Load configuration from `FILE`",
-		},
 	}
 	app.Before = before
 	app.After = after
@@ -60,8 +55,6 @@ func Run(version string, commit string, buildDate string) error {
 }
 
 func before(c *cli.Context) error {
-	configFile := c.String("config")
-	config.LoadEnv(configFile)
 	app.config = config.Parse()
 	app.database = datastore.New(app.config.Database)
 	return nil

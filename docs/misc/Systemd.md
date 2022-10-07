@@ -43,7 +43,8 @@ If you want to [modify the configuration values for your Grasp service](../Confi
 For example, if you have a configuration file `/home/john/grasp.env` then the line should look like this:
 
 ```
-ExecStart=grasp --config=/home/john/grasp.env server --addr=:9000
+EnvironmentFile=/home/john/grasp.env
+ExecStart=grasp server --addr=:9000
 ```
 
 #### Start Grasp automatically at boot

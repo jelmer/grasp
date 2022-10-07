@@ -21,7 +21,7 @@ You can use Grasp with either Postgres, MySQL or SQLite.
 
 ### How to configure Grasp?
 
-Create a file named `.env` in the working directory of your Grasp process. You can [find a list of accepted configuration values here](Configuration.md).
+Using environment variables. You can [find a list of accepted configuration values here](Configuration.md).
 
 ---
 

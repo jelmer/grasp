@@ -3,10 +3,8 @@ package config
 import (
 	"math/rand"
 	"net/url"
-	"os"
 	"path/filepath"
 
-	"github.com/joho/godotenv"
 	"github.com/kelseyhightower/envconfig"
 	log "github.com/sirupsen/logrus"
 	"github.com/jelmer/grasp/pkg/datastore/sqlstore"
@@ -16,31 +14,6 @@ import (
 type Config struct {
 	Database *sqlstore.Config
 	Secret   string
-}
-
-// LoadEnv loads env values from the supplied file
-func LoadEnv(file string) {
-	if file == "" {
-		log.Warn("Missing configuration file. Using defaults.")
-		return
-	}
-
-	absFile, _ := filepath.Abs(file)
-	_, err := os.Stat(absFile)
-	fileNotExists := os.IsNotExist(err)
-
-	if fileNotExists {
-		log.Warnf("Error reading configuration. File `%s` does not exist.", file)
-		return
-	}
-
-	log.Printf("Configuration file: %s", absFile)
-
-	// read file into env values
-	err = godotenv.Load(absFile)
-	if err != nil {
-		log.Fatalf("Error parsing configuration file: %s", err)
-	}
 }
 
 // Parse environment into a Config struct
