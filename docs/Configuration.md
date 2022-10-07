@@ -4,10 +4,11 @@ All configuration in Grasp is optional. If you supply no configuration values th
 
 If you're already running MySQL or PostgreSQL on the server you're installing Grasp on, you'll most likely want to use one of those as your database driver.
 
-To do so, either create a `.env` file in the working directory of your Grasp application or point Grasp to your configuration file by specifying the `--config` flag when starting Grasp.
+To do so, set the appropriate environment variables when starting grasp.
 
 `
-grasp --config=/home/john/grasp.env server
+source /home/john/grasp.env
+grasp server
 `
 
 The default configuration looks like this:

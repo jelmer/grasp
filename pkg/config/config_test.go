@@ -1,32 +1,9 @@
 package config
 
 import (
-	"io/ioutil"
 	"os"
 	"testing"
 )
-
-func TestLoadEnv(t *testing.T) {
-	before := len(os.Environ())
-	LoadEnv("")
-	LoadEnv("1230")
-	after := len(os.Environ())
-
-	if before != after {
-		t.Errorf("Expected the same number of env values")
-	}
-
-	data := []byte("GRASP_DATABASE_DRIVER=\"sqlite3\"")
-	ioutil.WriteFile("env_values", data, 0644)
-	defer os.Remove("env_values")
-
-	LoadEnv("env_values")
-
-	got := os.Getenv("GRASP_DATABASE_DRIVER")
-	if got != "sqlite3" {
-		t.Errorf("Expected %v, got %v", "sqlite3", got)
-	}
-}
 
 func TestParse(t *testing.T) {
 	// empty config, should not fatal
@@ -50,11 +27,7 @@ func TestParse(t *testing.T) {
 }
 
 func TestDatabaseURL(t *testing.T) {
-	data := []byte("GRASP_DATABASE_URL=\"postgres://dbuser:dbsecret@dbhost:1234/dbname\"")
-	ioutil.WriteFile("env_values", data, 0644)
-	defer os.Remove("env_values")
-
-	LoadEnv("env_values")
+	os.Setenv("GRASP_DATABASE_URL", "postgres://dbuser:dbsecret@dbhost:1234/dbname")
 	cfg := Parse()
 	driver := "postgres"
 	url := "postgres://dbuser:dbsecret@dbhost:1234/dbname"

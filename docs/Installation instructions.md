@@ -30,7 +30,7 @@ mkdir ~/my-grasp-site
 cd ~/my-grasp-site
 ```
 
-Then, create a file named `.env` with the following contents.
+Then, set the following environment variables:
 
 ```
 GRASP_SERVER_ADDR=9000
@@ -49,7 +49,7 @@ Check out the [configuration file documentation](Configuration.md) for all possi
 
 > This step is required.
 
-To register a user in the Grasp instance we just created, run the following command from the directory where your `.env` file is. 
+To register a user in the Grasp instance we just created, run the following command:
 
 ```
 grasp user add --email="john@email.com" --password="strong-password"
