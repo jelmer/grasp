@@ -16,7 +16,6 @@ RUN make ARCH=${GOARCH} OS=${GOOS} docker
 
 FROM docker.io/alpine:latest
 EXPOSE 8080
-HEALTHCHECK --retries=10 CMD ["wget", "-qO-", "http://localhost:8080/health"]
 RUN apk add --update --no-cache bash ca-certificates
 WORKDIR /app
 COPY --from=binarybuilder /go/src/github.com/jelmer/grasp/grasp .
